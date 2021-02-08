@@ -36,7 +36,10 @@ app.post('/api/message/send', (req, res) => {
     })
 
     transporter.sendMail(messageObj, (err, data) => {
-        if (err) return res.status(500).send('server error').end();
+        if (err) {
+            console.log(err)
+            return res.status(500).send('server error').end();
+        }
 
         res.status(200).end()
     })
